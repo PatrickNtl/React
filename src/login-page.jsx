@@ -9,7 +9,7 @@ function LoginPage() {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center transition-colors duration-300">
+    <div className="bg-green-100 min-h-screen flex items-center justify-center transition-colors duration-300">
       <div
         className={`bg-white p-8 rounded shadow-md w-full max-w-md transform transition-all duration-700 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

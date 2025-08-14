@@ -27,6 +27,7 @@ function SignupPage() {
             <input
               type="email"
               id="email"
+              placeholder='Enter your email'
               required
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 transition"
             />
@@ -39,6 +40,7 @@ function SignupPage() {
             <input
               type="password"
               id="password"
+              placeholder='Enter your password'
               required
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 transition"
             />
@@ -51,6 +53,7 @@ function SignupPage() {
             <input
               type="password"
               id="confirmPassword"
+              placeholder='Confirm password'
               required
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 transition"
             />

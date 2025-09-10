@@ -1,105 +1,106 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 
-export default function App() {
-  const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(false);
-
+function HomePage() {
   return (
-    <div className={dark ? "dark" : ""}>
-      <div className="min-h-screen bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-950 dark:text-gray-100">
-        {/* Background */}
-        <div className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute left-1/2 top-[-10%] h-[500px] w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-indigo-500/20 via-fuchsia-500/20 to-rose-500/25 blur-3xl" />
-        </div>
+    <div className="font-sans bg-gray-50 min-h-screen flex flex-col">
+      {/* Navbar */}
+      <header className="bg-white shadow-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
+          <h1 className="text-xl sm:text-2xl font-bold text-blue-600">MyApp</h1>
 
-        {/* Navbar */}
-        <header className="sticky top-0 z-30 backdrop-blur bg-white/70 dark:bg-gray-950/60">
-          <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-            <div className="flex items-center gap-2">
-              <div className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-tr from-indigo-600 to-rose-600 text-white">
-                <Sparkles className="h-4 w-4" />
-              </div>
-              <span className="text-base font-semibold tracking-tight">GlowUI</span>
-            </div>
-
-            <div className="hidden items-center gap-1 md:flex">
-              <div className="group flex items-center">
-                <NavLink>Features</NavLink>
-              </div>
-              <div className="group flex items-center">
-                <NavLink>Showcase</NavLink>
-              </div>
-              <div className="group flex items-center">
-                <NavLink>Pricing</NavLink>
-              </div>
-              <div className="group flex items-center">
-                <NavLink>Contact</NavLink>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                className="rounded-xl border border-gray-300 p-2 transition-colors duration-300 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-800"
-                onClick={() => setDark((d) => !d)}
-              >
-                {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </button>
-              <button
-                className="md:hidden rounded-xl border border-gray-300 p-2 transition-colors duration-300 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-800"
-                onClick={() => setOpen((o) => !o)}
-              >
-                <Menu className="h-5 w-5" />
-              </button>
-            </div>
+          <nav className="hidden md:flex space-x-6 text-gray-700 font-medium">
+            <a href="#features" className="hover:text-blue-600 transition">
+              Features
+            </a>
+            <a href="#about" className="hover:text-blue-600 transition">
+              About
+            </a>
+            <a href="#contact" className="hover:text-blue-600 transition">
+              Contact
+            </a>
           </nav>
 
-          {open && (
-            <div className="mx-auto block max-w-7xl px-4 pb-4 md:hidden">
-              <div className="grid gap-2 rounded-2xl border border-gray-200 p-3 dark:border-gray-800">
-                {["Features", "Showcase", "Pricing", "Contact"].map((x) => (
-                  <a
-                    key={x}
-                    href="#"
-                    className="rounded-xl px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-                  >
-                    {x}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </header>
+          {/* Mobile Menu Button */}
+          <button className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <svg
+              className="w-6 h-6 text-gray-700"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </header>
 
-        {/* Hero Section */}
-        <section className="mx-auto max-w-7xl px-4 pb-10 pt-14 sm:px-6 sm:pt-16">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div>
-              <span className="inline-flex items-center rounded-full border border-indigo-200 px-3 py-1 text-xs font-medium text-indigo-700 backdrop-blur dark:border-indigo-900/40 dark:text-indigo-300">
-                <span className="mr-2 inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-indigo-500" />
-                New: Delightful hover effects
-              </span>
-              <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
-                Build modern UIs with
-                <span className="block bg-gradient-to-tr from-indigo-600 via-fuchsia-600 to-rose-600 bg-clip-text text-transparent">
-                  Tailwind CSS transitions
-                </span>
-              </h1>
-              <p className="mt-4 max-w-xl text-base leading-7 text-gray-600 dark:text-gray-300">
-                A sleek starter that demonstrates buttons, cards, image overlays, and animated nav links.
-                Copy-paste components and customize to your brand.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <PrimaryButton>
-                  Get Started
-                </PrimaryButton>
-                <GhostButton>
-                  View Docs
-                </GhostButton>
-              </div>
-            </div>
+      {/* Hero Section */}
+      <section className="flex-1 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 lg:px-12 py-12">
+        <div className="text-center md:text-left md:w-1/2 space-y-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800">
+            Welcome to <span className="text-blue-600">MyApp</span>
+          </h2>
+          <p className="text-gray-600 text-base sm:text-lg md:text-xl">
+            A modern responsive app built with React & TailwindCSS.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <a
+              href="/login"
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+            >
+              Get Started
+            </a>
+            <a
+              href="#features"
+              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg shadow hover:border-blue-600 hover:text-blue-600 transition"
+            >
+              Learn More
+            </a>
           </div>
-        </section>
-      </div>
+        </div>
+
+        {/* Hero Image */}
+        <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center">
+          <img
+            src="https://via.placeholder.com/400x300"
+            alt="Hero"
+            className="w-full max-w-md rounded-xl shadow-lg"
+          />
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {["Fast", "Responsive", "Modern"].map((feature, index) => (
+            <div
+              key={index}
+              className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition"
+            >
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {feature}
+              </h3>
+              <p className="text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                nec velit vel lacus porta malesuada.
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-gray-300 py-6 mt-auto">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center sm:flex sm:justify-between sm:items-center">
+          <p>&copy; {new Date().getFullYear()} MyApp. All rights reserved.</p>
+          <div className="flex justify-center space-x-4 mt-4 sm:mt-0">
+            <a href="#" className="hover:text-white">Privacy</a>
+            <a href="#" className="hover:text-white">Terms</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
+
+export default HomePage;
